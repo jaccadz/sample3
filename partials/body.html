@@ -1,0 +1,86 @@
+<h4 class="header blue lighter bigger" >
+		  <i class="icon-coffee green"></i>
+		  MESSAGING
+		</h4>
+  <div class="row" ng-controller="submitCtrl">
+	<div class="col-sm-5" >
+	<div class="well">
+		<h4 class="header blue lighter bigger" >
+		  <i class="icon-coffee green"></i>
+		  Send a message
+		</h4>
+		<div class="row">
+			<div class="col-sm-12">
+				<form name="sendForm" class="form-horizontal" role="form">
+					<div class="form-group">
+							<label class="col-sm-2 control-label no-padding-right" for="fromname"> From </label>
+							<div class="col-sm-9">
+							   <span class="block input-icon input-icon-right">
+									<input type="text" class="form-control" placeholder="Name" name="fromname" ng-model="m.o_fromName" required focus/>
+									<input type="number" class="form-control" placeholder="Telephone" name="fromtelephone" onkeypress="return isNumberKey(event)" ng-model="m.o_fromTelephone" />
+								</span>
+							</div>
+					</div>
+					<div class="form-group">
+							<label class="col-sm-2 control-label no-padding-right" for="toname"> To </label>
+							<div class="col-sm-9">
+							   <span class="block input-icon input-icon-right">
+									<input type="text" class="form-control" placeholder="Name" name="toname" ng-model="m.o_toName" required />
+									<input type="number" class="form-control" placeholder="Telephone" name="totelephone" onkeypress="return isNumberKey(event)" ng-model="m.o_toTelephone" />
+								</span>
+							</div>
+					</div>
+					<div class="form-group">
+							<label class="col-sm-2 control-label no-padding-right" for="message"> Message </label>
+							<div class="col-sm-9">
+							   <span class="block input-icon input-icon-right">
+									<textarea class="form-control" name="message" ng-model="m.o_message" required> </textarea>
+								</span>
+							</div>
+					</div>
+					<div class="form-group">
+					  <label class="col-sm-2 control-label no-padding-left"> </label>
+					  <div class="col-sm-9">
+						<button class="width-35 pull-left btn btn-sm btn-primary" ng-click="submitMessage(m);">
+						  Submit
+						</button>
+					  </div>
+					</div>
+				</form>
+			</div>
+			<div class="col-sm-4"></div>
+		
+		</div>
+	
+	</div>
+	</div>
+	
+	<div class="col-sm-5">
+	<div class="well">
+		<h4 class="header blue lighter bigger" >
+		  <i class="icon-coffee green"></i>
+		  Conversations: {{convoFrom}} and {{convoTo}}
+		</h4> 
+		<!--<pre ng-model="convoResult">
+				{{convoResult}} 
+				
+		</pre> -->
+		<div ng-repeat="c in convoResult" class="row">
+			<span class="col-sm-10">[{{c.o_dateTime}}] {{c.o_fromName}}: {{c.o_message}}</span>
+		</div>  
+		
+		
+
+	</div>
+	</div>
+  </div>
+  
+  <script>
+  function isNumberKey(evt){
+    var charCode = (evt.which) ? evt.which : event.keyCode
+    if (charCode > 31 && (charCode < 48 || charCode > 57))
+        return false;
+    return true;
+	}
+
+</script>
